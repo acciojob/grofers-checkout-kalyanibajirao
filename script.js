@@ -1,26 +1,23 @@
 const getSumBtn = document.createElement("button");
-getSumBtn.textContent = "Get Total Price";
+getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-    const priceCells = document.querySelectorAll(".prices"); // Select all price cells
-    let totalPrice = 0;
-
-    priceCells.forEach((cell) => {
-        const price = parseFloat(cell.textContent);
-        totalPrice += price;
-    });
-
-    // Create a new row for the total price
-    const totalRow = document.createElement("tr");
-    const totalCell = document.createElement("td");
-    totalCell.colSpan = 3; // Span all columns
-    totalCell.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-    totalRow.appendChild(totalCell);
-
-    // Append the total row to your table (assuming you have a reference to the table)
-    const table = document.querySelector(".groceryTable");
-    table.appendChild(totalRow);
+//Add your code here
+	const prices=document.querySelectorAll('.price')
+	let totalPrice=0
+	prices.forEach((item)=>totalPrice+=Number(item.textContent))
+	  const table=document.querySelector('table')
+	const total=document.getElementById('total')
+	if(total){
+		total.remove()
+	}
+	table.innerHTML+=`
+		 <tr id="total">
+	      <td class="item">Total</td>
+	      <td class="prices" id="ans">${totalPrice}</td>
+	    </tr>
+	`
 };
 
-getSumBtn.addEventListener("click", getSum);
+getSumBtn.addEventListener("click", getSum);
